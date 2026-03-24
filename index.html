@@ -161,7 +161,7 @@
                 <li><span class="font-bold text-blue-500">上市第 5 天：</span>尋找初掛牌的流動性溢價機會。</li>
                 <li><span class="font-bold text-green-500">上市 30 天內：</span>觀察新券的籌碼穩定狀況。</li>
                 <li><span class="font-bold text-orange-500">發行將滿 1 年：</span>關鍵重設日期或賣回條款即將生效。</li>
-                <li><span class="font-bold text-red-500">到期剩 1 年：</span>評估強制贖回風險或最後價內外程度。</li>
+                <li><span class="font-bold text-red-500">到期剩不到 1 年：</span>到期日在 1 年以內（0~365天）的標的。</li>
             </ul>
         </div>
     </div>
@@ -271,7 +271,8 @@
                 }),
                 due1: list.filter(item => {
                     const d = getDaysToMaturity(item['到期日']);
-                    return d >= 335 && d <= 365;
+                    // 修改邏輯：到期日在 1 年以內 (0 到 365 天)
+                    return d >= 0 && d <= 365;
                 })
             };
 
